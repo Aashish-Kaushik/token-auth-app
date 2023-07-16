@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken');
-const createError = require('http-errors');
-const ms = require('ms');
+const jwt = require("jsonwebtoken");
+const createError = require("http-errors");
+const ms = require("ms");
 
-const { clearTokens, generateJWT } = require('../utils/auth');
-const { users, tokens } = require('../data/data');
+const { clearTokens, generatedJWT } = require("../utils/auth");
+const { users, tokens } = require("../data/data");
 
 exports.signUp = async (req, res, next) => {
   const { name, username, email, password } = req.body;
   if (!name || !username || !email || !password) {
     return res.status(422).json({
-      error: 'please fill all the required fields',
+      error: "please fill all the required fields",
     });
   }
   try {
@@ -40,7 +40,7 @@ exports.login = async (req, res, next) => {
   try {
     if (!username || !password) {
       return res.status(422).json({
-        error: 'please fill all the required fields',
+        error: "please fill all the required fields",
       });
     }
     const user = users.find((user) => {
@@ -49,13 +49,13 @@ exports.login = async (req, res, next) => {
       }
     });
     if (!user) {
-      const error = createError.Unauthorized('Invalid username or passwoed ');
+      const error = createError.Unauthorized("Invalid username or passwoed ");
       throw error;
     }
     const passwordsMatch = user.password == password;
 
     if (!passwordsMatch) {
-      const error = createError.Unauthorized('Invalid username or Password');
+      const error = createError.Unauthorized("Invalid username or Password");
       throw error;
     }
     req.userId = user.id;
@@ -90,10 +90,10 @@ exports.refreshAccessToken = async (req, res, next) => {
       const user = users.find((user) => user.id == userId);
       if (!user) {
         await clearTokens(req, res);
-        const error = createError('Invalid credentials', 401);
+        const error = createError("Invalid credentials", 401);
         throw error;
       }
-      const accessToken = generateJWT(user.id, ACCESS_TOKEN_SECRET, ACCESS_TOKEN_LIFE);
+      const accessToken = generatedJWT(user.id, ACCESS_TOKEN_SECRET, ACCESS_TOKEN_LIFE);
       return res.status(200).json({
         user,
         accessToken,

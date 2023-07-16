@@ -9,9 +9,9 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 import Signup from "./components/Signup/Signup";
-import Login from "./components/Login/Login";
-import Home from "./components/Home/Home";
-import Users from "./components/Users/Users";
+import Login from "./components/Login/login";
+import Home from "./components/Home/home";
+import Users from "./components/Users/users";
 import Layout from "./components/Layout/Layout";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 
@@ -62,7 +62,7 @@ function App() {
       }
     };
   }, [expiresAt, isAuthenticated, refreshAccessToken]);
-  
+
   const router = createBrowserRouter([
     {
       element: <Layout />,

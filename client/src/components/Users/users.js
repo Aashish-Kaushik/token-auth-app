@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-import User from "./User/User";
+import User from "../Users/users";
 
 import { useAuth } from "../../contexts/auth-context";
 
-import styles from './Users.module.scss';
+import styles from "./Users.module.scss";
 
 const Users = () => {
   const { token } = useAuth();
@@ -30,7 +30,7 @@ const Users = () => {
     <div className={styles.container}>
       {users.map((user) => (
         <div key={user.id} className={styles.userContainer}>
-            <User user={user}/>
+          <User user={user} />
         </div>
       ))}
     </div>

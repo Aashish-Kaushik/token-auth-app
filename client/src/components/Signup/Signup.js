@@ -1,14 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../contexts/auth-context";
 import { STATUS } from "../../utils/utils";
 
-import styles from "./Signup.module.scss";
+import styles from "./Singnup.module.scss";
 
 const Signup = () => {
-
   const {
     handleSubmit,
     register,
@@ -163,10 +162,7 @@ const Signup = () => {
               })}
             />
             <div className={styles.validationError}>
-              <span>
-                {touchedFields.confirmPassword &&
-                  errors.confirmPassword?.message}
-              </span>
+              <span>{touchedFields.confirmPassword && errors.confirmPassword?.message}</span>
             </div>
           </div>
           <div className={styles.formGroup}>

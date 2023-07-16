@@ -1,10 +1,10 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const { isAuthenticated } = require('../middlewares/auth');
-const usersController = require('../controllers/users');
+const { isAuthenticated } = require("../middlewares/auth");
+const usersController = require("../controllers/users");
 
-router.get('/list', isAuthenticated, usersController.getUsersList);
-router.get('/me', isAuthenticated, usersController.getAuthenticatedUser);
-router.get('/:id', isAuthenticated, usersController.getUserById);
+router.get("/list", isAuthenticated, usersController.getUsers);
+router.get("/me", isAuthenticated, usersController.getAuthenticatedUser);
+router.get("/:id", isAuthenticated, usersController.getuserById);
 
 module.exports = router;

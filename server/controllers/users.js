@@ -1,5 +1,5 @@
 const createError = require(`http-errors`);
-const { users } = require('../data/data');
+const { users } = require("../data/data");
 
 exports.getUsers = async (req, res, next) => {
   const usersListwithOutpassword = users.map((user) => {
