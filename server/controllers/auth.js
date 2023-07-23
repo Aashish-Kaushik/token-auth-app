@@ -64,6 +64,7 @@ exports.login = async (req, res, next) => {
     return next(error);
   }
 };
+exports.test = test; 
 
 exports.logout = async (req, res, next) => {
   await clearTokens(req, res, next);
